@@ -135,21 +135,6 @@ function gemour_widgets_init() {
 add_action( 'widgets_init', 'gemour_widgets_init' );
 
 /**
- * Enqueue scripts and styles.
- */
-function gemour_scripts() {
-	wp_enqueue_style( 'gemour-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'gemour-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( 'gemour-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'gemour_scripts' );
-
-/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
@@ -168,6 +153,12 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Custom style
+ */
+require get_template_directory() . '/inc/assets.php';
+
 
 /**
  * Load Jetpack compatibility file.
